@@ -21,7 +21,7 @@ public class FtpToJMSExample {
         
         // connect to embedded ActiveMQ JMS broker
         ConnectionFactory connectionFactory = 
-            new ActiveMQConnectionFactory("vm://localhost");
+            new ActiveMQConnectionFactory("tcp://localhost:61616");
         context.addComponent("jms",
             JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
 
@@ -29,7 +29,13 @@ public class FtpToJMSExample {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() {
-                from("ftp://rider.com/orders?username=rider&password=secret").to("jms:incomingOrders");
+                from("ftp://127.0.0.1///orders?username=yourName&password=yourPass")
+                        .log("${body}")
+                        .to("jms:incomingOrders");
+//                from("timer:timer")
+//                        .transform().constant("megaman")
+//                        .log("${body}")
+//                        .to("jms:incomingOrders");
             }
         });
 

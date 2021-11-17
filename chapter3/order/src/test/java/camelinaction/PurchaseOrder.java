@@ -39,4 +39,12 @@ public class PurchaseOrder {
         this.price = price;
     }
 
+    public PurchaseOrder(String name, double price, double amount) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+    }
+
+    public PurchaseOrder() {
+    }
 }

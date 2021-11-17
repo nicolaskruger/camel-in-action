@@ -13,13 +13,17 @@ public class FileCopierWithCamel {
         // add our route to the CamelContext
         context.addRoutes(new RouteBuilder() {
             public void configure() {
-                from("file:data/inbox?noop=true").to("file:data/outbox");
+                        from("file:data/inbox?noop=true")
+                                .log("#################################")
+                                .setProperty("matue", constant("tue"))
+                                .log("#################################")
+                        .to("file:data/outbox");
             }
         });
 
         // start the route and let it do its work
         context.start();
-        Thread.sleep(10000);
+        Thread.sleep(1000);
 
         // stop the CamelContext
         context.stop();

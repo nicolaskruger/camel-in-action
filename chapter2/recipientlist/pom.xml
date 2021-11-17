@@ -59,6 +59,11 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jsonpath</artifactId>
+    </dependency>
+
   </dependencies>
 
 </project>

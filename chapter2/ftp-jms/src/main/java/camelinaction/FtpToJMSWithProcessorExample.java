@@ -23,7 +23,7 @@ public class FtpToJMSWithProcessorExample {
         
         // connect to embedded ActiveMQ JMS broker
         ConnectionFactory connectionFactory = 
-            new ActiveMQConnectionFactory("vm://localhost");
+            new ActiveMQConnectionFactory("tcp://localhost:61616");
         context.addComponent("jms",
             JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
 
@@ -31,7 +31,7 @@ public class FtpToJMSWithProcessorExample {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() {
-                from("ftp://rider.com/orders?username=rider&password=secret").
+                from("ftp://127.0.0.1/orders?username=yourName&password=yourPass").
                 process(new Processor() {                    
                     public void process(Exchange exchange) throws Exception {
                         System.out.println("We just downloaded: " + exchange.getIn().getHeader("CamelFileName"));

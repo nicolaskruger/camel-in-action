@@ -53,6 +53,25 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    <!--    mock-->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.22</version>
+      <scope>provided</scope>
+    </dependency>
+    <!--    model mapper-->
+    <dependency>
+      <groupId>org.modelmapper</groupId>
+      <artifactId>modelmapper</artifactId>
+      <version>2.4.2</version>
+    </dependency>
+    <!--   camel: jackson -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jackson</artifactId>
+      <version>3.13.0</version>
+    </dependency>
   </dependencies>
 
 </project>
